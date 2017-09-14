@@ -155,6 +155,8 @@ Question 7:
 The pids generated are sequential in order.
 Even if they are not displayed in the same line or readable for some runs, we can figure out which is the process,child or parent because of the sequential numbers generated.
 Each process prints its own parent,child and process ids.
+But when Parent ID is 1 for multiple processes, it is difficult to figure out which process printed it out.
+
 
 -bash-4.2$ ./my_prog_q7 4
 i: 1 process ID: 15291 parent ID: 25020 child ID: 15292
