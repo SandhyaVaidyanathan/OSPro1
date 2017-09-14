@@ -1,7 +1,10 @@
+//Sandhya Vaidyanathan
+//09/14/17
+
 3.1
 Question 1:
 
-Large number of processes are running. The old processes are dying and new ones are constantly created.
+Large number of processes are forked. The old processes are dying and new ones are constantly created.
 -------------------------------------------------------------------
 Question 2:
 
@@ -37,7 +40,7 @@ The average of the above 5 processes would be 34.66%
 -----------------------------------------------------------------------
 Question 4:
 
-Placing sleep(10) before fprintf, processes delays 10s before starting to print.
+Placing sleep(10) before fprintf, processes are delayed by 10s before starting to print.
 Maximum process: 28
 
 -bash-4.2$ ./my_prog_q4 40
@@ -80,9 +83,7 @@ for (i = 1; i < n; i++)
 if (childpid = fork())
 break;
 
-The loop exits after creating the number of processes.
-The child processes are then printing the pids for k times by waiting m seconds before printing it again.
-
+The processes are then printing the pids for k times by waiting m seconds before printing it again.
 
 -bash-4.2$ ./a.out -n 3 -k 5 -m 0
 i:1 process ID:15739 parent ID:13306 child ID:15740
@@ -152,9 +153,8 @@ i:1 process ID:27910 parent ID:9318 child ID:27911
 Question 7:
 
 The pids generated are sequential in order.
-Even if they are not displayed in the same line or readable for some runs, we can figure out which is the process,child or parent
-because of sequential numbers generated.
-Each process generates its own parent,child and process ids.
+Even if they are not displayed in the same line or readable for some runs, we can figure out which is the process,child or parent because of the sequential numbers generated.
+Each process prints its own parent,child and process ids.
 
 -bash-4.2$ ./my_prog_q7 4
 i: 1 process ID: 15291 parent ID: 25020 child ID: 15292
@@ -185,5 +185,7 @@ i: 1 process ID: 15348 parent ID: 25020 child ID: 15349
 ------------------------------------------------------------------------------------
 Question 8:
 
-All the printf statements are displayed beforehand.
-
+Once the processes are generated , the first printf statement is displayed for all processes.
+All proccesses are racing for the scanf / to get the input from the user.
+Program in p1q8.c
+-------------------------------------------------------------------------------------------
