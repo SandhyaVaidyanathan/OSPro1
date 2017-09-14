@@ -17,7 +17,7 @@ int i, n;
 	}
 
 n = atoi(argv[1]);
-for (i = 1; i < n; i++)
+for (i = 1; i < n; i++)//added extra curl braces
 if (childpid = fork())
 break;
 fprintf(stderr, "i:%d process ID:%ld parent ID:%ld child ID:%ld\n",

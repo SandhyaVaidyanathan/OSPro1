@@ -17,6 +17,7 @@ return 1;
         switch (option) {
              case 'h' :
                 printf("Usage executable -n {no. of child processes} -c {no. of characters for nchar}\n");
+                return 1;
                 break;
              case 'n' : n = atoi(optarg);
                 break;
