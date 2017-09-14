@@ -1,3 +1,6 @@
+//Sandhya Vaidyanathan
+//09/14/17
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -9,8 +12,8 @@ int i, n,j,nchars;
 int option = 0;
 
 if (argc < 2){ /* check for valid number of command-line arguments */
-fprintf(stderr, " %s: Error : Try Executable -h for help \n",argv[0]);
-return 1;
+  fprintf(stderr, " %s: Error : Try Executable -h for help \n",argv[0]);
+  return 1;
 }
 
   while ((option = getopt(argc, argv,"hn:c:")) != -1) {
@@ -25,12 +28,10 @@ return 1;
                  break;
 
             default:
-	//displaying error message as per the required format with executable name
+	                 //displaying error message as per the required format with executable name
 		              fprintf(stderr, "%s: ",argv[0]);
                   perror(" Error: Invalid option");
                   abort();
-               //   break;
-                //exit(EXIT_FAILURE);
         }
     }
  

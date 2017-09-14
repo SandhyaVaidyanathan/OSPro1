@@ -1,3 +1,5 @@
+//Sandhya Vaidyanathan
+//09/14/17
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,10 +28,10 @@ return 1;
        case 'm' : m = atoi(optarg);
             break;
        default: 
-	//displaying error message as per the required format with executable name
+	     //displaying error message as per the required format with executable name
 		          fprintf(stderr, "%s: ",argv[0]);
-                  perror(" Error: Invalid option");
-                  abort();
+              perror(" Error: Invalid option");
+              abort();
         }
     }
 
