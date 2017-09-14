@@ -1,0 +1,189 @@
+3.1
+Question 1:
+
+Large number of processes are running. The old processes are dying and new ones are constantly created.
+-------------------------------------------------------------------
+Question 2:
+
+i:1 process ID:11468 parent ID:25020 child ID:11469
+i:2 process ID:11469 parent ID:11468 child ID:11470
+i:3 process ID:11470 parent ID:11469 child ID:11471
+i:4 process ID:11471 parent ID:11470 child ID:0
+
+1 (11468)
+|
+|
+V
+2(11469)
+|
+|
+V
+3(11470)
+|
+|
+V
+4(11471)
+---------------------------------------------------------------------
+Question 3:
+
+Init processes / total no. of processes
+1/4	= 25%
+4/8	= 50%
+5/15 = 33.33%
+7/20 = 35%
+13/30 = 30%
+
+The average of the above 5 processes would be 34.66%
+-----------------------------------------------------------------------
+Question 4:
+
+Placing sleep(10) before fprintf, processes delays 10s before starting to print.
+Maximum process: 28
+
+-bash-4.2$ ./my_prog_q4 40
+i:1 process ID:20588 parent ID:18401 child ID:20589
+i:2 process ID:20589 parent ID:1 child ID:20590
+-bash-4.2$ i:3 process ID:20590 parent ID:1 child ID:20591
+i:4 process ID:20591 parent ID:20590 child ID:20592
+i:5 process ID:20592 parent ID:20591 child ID:20593
+i:6 process ID:20593 parent ID:20592 child ID:20594
+i:7 process ID:20594 parent ID:1 child ID:20595
+i:8 process ID:20595 parent ID:1 child ID:20596
+i:9 process ID:20596 parent ID:1 child ID:20597
+i:10 process ID:20597 parent ID:1 child ID:20598
+i:11 process ID:20598 parent ID:1 child ID:20599
+i:12 process ID:20599 parent ID:1 child ID:20600
+i:13 process ID:20600 parent ID:1 child ID:20601
+i:14 process ID:20601 parent ID:1 child ID:20602
+i:15 process ID:20602 parent ID:1 child ID:20603
+i:16 process ID:20603 parent ID:1 child ID:20604
+i:17 process ID:20604 parent ID:1 child ID:20605
+i:18 process ID:20605 parent ID:1 child ID:20606
+i:19 process ID:20606 parent ID:1 child ID:20607
+i:20 process ID:20607 parent ID:1 child ID:20608
+i:21 process ID:20608 parent ID:1 child ID:20609
+i:22 process ID:20609 parent ID:1 child ID:20610
+i:23 process ID:20610 parent ID:1 child ID:20611
+i:24 process ID:20611 parent ID:1 child ID:20612
+i:25 process ID:20612 parent ID:1 child ID:20613
+i:26 process ID:20613 parent ID:1 child ID:20614
+i:27 process ID:20614 parent ID:1 child ID:20615
+i:28 process ID:20615 parent ID:20614 child ID:-1
+
+----------------------------------------------------------------------
+Question 5:
+
+Implemented	 getopt() , perror() and desired error format in p1q5.c 
+Same set of process ID numbers are displayed in every loop.
+This is because , the processes are generated only once with the help of the following loop.
+for (i = 1; i < n; i++)
+if (childpid = fork())
+break;
+
+The loop exits after creating the number of processes.
+The child processes are then printing the pids for k times by waiting m seconds before printing it again.
+
+
+-bash-4.2$ ./a.out -n 3 -k 5 -m 0
+i:1 process ID:15739 parent ID:13306 child ID:15740
+i:1 process ID:15739 parent ID:13306 child ID:15740
+i:1 process ID:15739 parent ID:13306 child ID:15740
+i:1 process ID:15739 parent ID:13306 child ID:15740
+i:1 process ID:15739 parent ID:13306 child ID:15740
+i:2 process ID:15740 parent ID:15739 child ID:15741
+i:3 process ID:15741 parent ID:15740 child ID:0
+i:2 process ID:15740 parent ID:1 child ID:15741
+i:3 process ID:15741 parent ID:15740 child ID:0
+i:2 process ID:15740 parent ID:1 child ID:15741
+i:3 process ID:15741 parent ID:15740 child ID:0
+i:2 process ID:15740 parent ID:1 child ID:15741
+i:3 process ID:15741 parent ID:15740 child ID:0
+i:2 process ID:15740 parent ID:1 child ID:15741
+i:3 process ID:15741 parent ID:15740 child ID:0
+
+
+---------------------------------------------------------------------------
+Question 6:
+wait() before the fprintf 
+
+Observations:
+The processes are printed in the reverse order.
+no init processes
+child ID terminates at -1, no more child processes available
+
+parent waits for the child process to complete/die. Since this program generates a chain of processes,
+Each parent waits for its child to finish. When no more child processes are available wait() returns -1.
+One by one the processes terminate. The last child terminates first, then its parent terminates, and so on.
+Hence we see the result in reverse order. 
+
+Max no. of proceses generated for this case is 27
+
+
+-bash-4.2$ ./my_prog_q6 30
+i:27 process ID:27936 parent ID:27935 child ID:-1
+i:26 process ID:27935 parent ID:27934 child ID:27936
+i:25 process ID:27934 parent ID:27933 child ID:27935
+i:24 process ID:27933 parent ID:27932 child ID:27934
+i:23 process ID:27932 parent ID:27931 child ID:27933
+i:22 process ID:27931 parent ID:27930 child ID:27932
+i:21 process ID:27930 parent ID:27929 child ID:27931
+i:20 process ID:27929 parent ID:27928 child ID:27930
+i:19 process ID:27928 parent ID:27927 child ID:27929
+i:18 process ID:27927 parent ID:27926 child ID:27928
+i:17 process ID:27926 parent ID:27925 child ID:27927
+i:16 process ID:27925 parent ID:27924 child ID:27926
+i:15 process ID:27924 parent ID:27923 child ID:27925
+i:14 process ID:27923 parent ID:27922 child ID:27924
+i:13 process ID:27922 parent ID:27921 child ID:27923
+i:12 process ID:27921 parent ID:27920 child ID:27922
+i:11 process ID:27920 parent ID:27919 child ID:27921
+i:10 process ID:27919 parent ID:27918 child ID:27920
+i:9 process ID:27918 parent ID:27917 child ID:27919
+i:8 process ID:27917 parent ID:27916 child ID:27918
+i:7 process ID:27916 parent ID:27915 child ID:27917
+i:6 process ID:27915 parent ID:27914 child ID:27916
+i:5 process ID:27914 parent ID:27913 child ID:27915
+i:4 process ID:27913 parent ID:27912 child ID:27914
+i:3 process ID:27912 parent ID:27911 child ID:27913
+i:2 process ID:27911 parent ID:27910 child ID:27912
+i:1 process ID:27910 parent ID:9318 child ID:27911
+
+--------------------------------------------------------------------------------
+Question 7:
+
+The pids generated are sequential in order.
+Even if they are not displayed in the same line or readable for some runs, we can figure out which is the process,child or parent
+because of sequential numbers generated.
+Each process generates its own parent,child and process ids.
+
+-bash-4.2$ ./my_prog_q7 4
+i: 1 process ID: 15291 parent ID: 25020 child ID: 15292
+ i: 2 process ID: 15292 parent ID: 1 child ID: 15293
+ i: 3 process ID: 15293 parent ID: 1 child ID: 15294
+ -bash-4.2$ i: 4 process ID: 15294 parent ID: 1 child ID: 0
+
+-bash-4.2$ ./my_prog_q7 5
+i: 1 process ID: 29475 parent ID: 13306 child ID: 29476
+ i: 2 process ID: 29476 parent ID: 1 child ID: 29477
+ i: 3 process ID: 29477 parent ID: 1 child ID: 29478
+ -bash-4.2$ i: 4 process ID: 29478 parent ID: 1 i: 5 child ID: 29479
+ process ID: 29479 parent ID: 29478 child ID: 0
+
+
+-bash-4.2$ ./my_prog_q7 10
+i: 1 process ID: 15348 parent ID: 25020 child ID: 15349
+ i: 2 process ID: 15349 parent ID: 1 child ID: 15350
+ i: 3 process ID: 15350 parent ID: 1 child ID: 15351
+ -bash-4.2$ i: 4 process ID: 15351 parent ID: 1 child ID: 15352
+ i: 5 process ID: 15352 parent ID: 1 child ID: 15353
+ i: 6 process ID: 15353 parent ID: 15352 child ID: 15354
+ i: 7 process ID: 15354 parent ID: 15353 child ID: 15355
+ i: 8 process ID: 15355 parent ID: 1 child ID: 15356
+ i: 9 process ID: 15356 i: 10 parent ID: 15355 child ID: 15357
+ process ID: 15357 parent ID: 15356 child ID: 0
+
+------------------------------------------------------------------------------------
+Question 8:
+
+All the printf statements are displayed beforehand.
+
