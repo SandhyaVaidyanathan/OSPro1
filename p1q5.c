@@ -13,9 +13,8 @@ int i, n, j, k,m;
 
         switch (option) {
 	     case 'h' :
-		printf("Help content");
+		 printf("Usage: <executable name> -n {no. of processes}-k { no. of loop times } -m {no. of sleep seconds} \n");
 		break;
-
 	     case 'n' : n = atoi(optarg);
 		break;
              case 'k' : k = atoi(optarg); 
@@ -24,10 +23,11 @@ int i, n, j, k,m;
                  break;
              default: 
                   perror("Error: ");
-		  return -1;
-		  break;
+		  //return -1;
+		  //break;
 		
-		exit(EXIT_FAILURE);
+		//exit(EXIT_FAILURE);
+		abort();
         }
     }
 
