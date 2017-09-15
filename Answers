@@ -113,7 +113,7 @@ no init processes
 child ID terminates at -1, no more child processes available
 
 parent waits for the child process to complete/die. Since this program generates a chain of processes,
-Each parent waits for its child to finish. When no more child processes are available wait() returns -1.
+Each parent waits for its child to finish. When no more child processes are available,
 One by one the processes terminate. The last child terminates first, then its parent terminates, and so on.
 Hence we see the result in reverse order. 
 
