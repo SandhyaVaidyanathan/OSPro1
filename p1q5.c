@@ -19,19 +19,20 @@ while ((option = getopt(argc, argv,"hn:k:m:")) != -1) {
 
   switch (option) {
     case 'h' :
-    printf("Usage: <executable name> -n {no. of processes}-k { no. of loop times } -m {no. of sleep seconds} \n");
-    break;
+	    printf("Usage: <executable name> -n {no. of processes}-k { no. of loop times } -m {no. of sleep seconds} \n");
+	    return 1;
+	    break;
     case 'n' : n = atoi(optarg);
-    break;
+	    break;
     case 'k' : k = atoi(optarg); 
-    break;
+	    break;
     case 'm' : m = atoi(optarg);
-    break;
+	    break;
     default: 
-	     //displaying error message as per the required format with executable name
-    fprintf(stderr, "%s: ",argv[0]);
-    perror(" Error: Invalid option");
-    abort();
+     //displaying error message as per the required format with executable name
+	    fprintf(stderr, "%s: ",argv[0]);
+	    perror(" Error: Invalid option");
+	    abort();
   }
 }
 

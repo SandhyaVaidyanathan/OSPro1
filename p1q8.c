@@ -8,7 +8,7 @@
 
 int main (int argc, char *argv[]) {
   pid_t childpid = 0;
-  int i, n,j,nchars;
+  int i, n =1 ,j,nchars =1;
   int option = 0;
 
 if (argc < 2){ /* check for valid number of command-line arguments */
@@ -19,29 +19,24 @@ if (argc < 2){ /* check for valid number of command-line arguments */
 while ((option = getopt(argc, argv,"hn:c:")) != -1) {
   switch (option) {
    case 'h' :
-   printf("Usage executable -n {no. of child processes} -c {no. of characters for nchar}\n");
-   return 1;
-   break;
+	   printf("Usage executable -n {no. of child processes} -c {no. of characters for nchar}\n");
+	   return 1;
+	   break;
    case 'n' : n = atoi(optarg);
-   break;
+	   break;
    case 'c' : nchars = atoi(optarg);
-   break;
-
+	   break;
    default:
-                 //displaying error message as per the required format with executable name
-   fprintf(stderr, "%s: ",argv[0]);
-   perror(" Error: Invalid option");
-   abort();
+   //displaying error message as per the required format with executable name
+	   fprintf(stderr, "%s: ",argv[0]);
+	   perror(" Error: Invalid option");
+	   abort();
  }
 }
 if(n < 1 || nchars < 1)
-	{       fprintf(stderr, "%s : Error: Usage executable -n {no. of child processes} -c {no. of characters for nchar}\n",argv[0]);
-return 1;
-}
-if(argc!=3)
 {
-	fprintf(stderr, "%s : Error: Usage executable -n {no. of child processes} -c {no. of characters for nchar}\n",argv[0]);
-	return 1 ;
+       fprintf(stderr, "%s : Error: Usage executable -n {no. of child processes} -c {no. of characters for nchar}\n",argv[0]);
+	return 1;
 }
 
 
